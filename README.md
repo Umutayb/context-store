@@ -2,9 +2,9 @@
 
 ## Overview
 
-This library provides utility classes for managing thread-safe storage and property handling. It includes the following key components:
+ContextStore provides utility classes for managing thread-safe context storage and property handling. It includes the following key components:
 
-1. **`ContextStore`**: A thread-safe storage solution using `ThreadLocal` and `ConcurrentHashMap`.
+1. **`ContextStore`**: A thread-safe context storage solution using `ThreadLocal` and `ConcurrentHashMap`.
 2. **`PropertiesReader`**: A simple wrapper for loading and accessing properties from a file.
 3. **`PropertyUtilities`**: A utility class for loading and manipulating properties from multiple sources (files, environment, system).
 4. **`UtilityPropertiesMap`**: A custom implementation of `AbstractMap` for flexible property handling.
