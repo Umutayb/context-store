@@ -10,10 +10,11 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request_target:
-    branches: [ "main" ]
-
+    branches:
+      - main
 jobs:
   regression-tests:
     runs-on: ubuntu-latest
