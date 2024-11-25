@@ -9,7 +9,7 @@
   <packaging>jar</packaging>
 
   <name>Context Store</name>
-  <description>Context Store is a context library where values can be stored, updated and accessed on the same thread!</description>
+  <description>Context Store is a reliable context storage solution where values can be stored, updated and accessed on the same thread!</description>
   <url>https://github.com/Umutayb/context-store</url>
 
   <licenses>
