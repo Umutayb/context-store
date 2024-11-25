@@ -31,10 +31,27 @@ This library provides utility classes for managing thread-safe storage and prope
 
 ### Installation
 
-1. Clone or download the library.
-2. Add the library to your project's classpath.
+To use Context Store in your Maven project, add the following dependency to your pom.xml file:
+```xml
+<dependency>
+    <groupId>io.github.umutayb</groupId>
+    <artifactId>context-store</artifactId>
+    <version>1.x.x</version>
+</dependency>
+```
+After updating your project, the quickstart library is ready to use.
 
 ---
+### ContextStore Usage
+
+```java
+ContextStore.put("key1", "value1");
+String value = ContextStore.get("key1"); // "value1"
+```
+
+```java
+String value = ContextStore.get("key1", "default"); // "returns 'default' if the key doesn't exist"
+```
 
 ## Classes and Methods
 
