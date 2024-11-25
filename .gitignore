@@ -1,0 +1,5 @@
+/${buildDirectory}/
+/.idea/
+/.mvn/
+/null/
+/out/
