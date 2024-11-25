@@ -9,8 +9,7 @@
   <packaging>jar</packaging>
 
   <name>Context Store</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>https://github.com/Umutayb/context-store</url>
 
   <properties>
     <buildDirectory>${project.basedir}/out/artifacts/context-store_jar</buildDirectory>
@@ -19,6 +18,15 @@
     <maven.compiler.release>17</maven.compiler.release>
     <java.version>17</java.version>
   </properties>
+
+  <developers>
+    <developer>
+      <name>Umut Ay Bora</name>
+      <email>umutaybora@gmail.com</email>
+      <organization>Bora</organization>
+      <organizationUrl>https://github.com/Umutayb</organizationUrl>
+    </developer>
+  </developers>
 
   <dependencyManagement>
     <dependencies>
@@ -33,16 +41,29 @@
   </dependencyManagement>
 
   <dependencies>
+
+    <!-- JUnit -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>24.0.0</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 
@@ -141,7 +162,7 @@
                 <arg>--pinentry-mode</arg>
                 <arg>loopback</arg>
               </gpgArguments>
-              <skip>true</skip>
+              <skip>false</skip>
             </configuration>
           </execution>
         </executions>
