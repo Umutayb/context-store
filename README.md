@@ -41,7 +41,6 @@ To use Context Store in your Maven project, add the following dependency to your
 ```
 After updating your project, the quickstart library is ready to use.
 
----
 ### ContextStore Usage
 
 ```java
