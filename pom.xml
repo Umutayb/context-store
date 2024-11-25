@@ -68,9 +68,9 @@
   </dependencies>
 
   <scm>
-    <connection>scm:git:git://github.com/Umutayb/Java-Utilities.git</connection>
-    <developerConnection>scm:git:ssh://github.com/Umutayb/Java-Utilities.git</developerConnection>
-    <url>https://github.com/Umutayb/Java-Utilities</url>
+    <connection>scm:git:git://github.com/Umutayb/context-store.git</connection>
+    <developerConnection>scm:git:ssh://github.com/Umutayb/context-store.git</developerConnection>
+    <url>https://github.com/Umutayb/Umutayb/context-store</url>
   </scm>
 
   <build>
