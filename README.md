@@ -1,7 +1,7 @@
 # Utility Library README
 
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.umutayb/context-store?color=brightgreen&label=Pickleib)](https://mvnrepository.com/artifact/io.github.umutayb/context-store/latest)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.umutayb/context-store?color=brightgreen&label=ContextStore)](https://mvnrepository.com/artifact/io.github.umutayb/context-store/latest)
 
 ## Overview
 
