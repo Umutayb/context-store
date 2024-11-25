@@ -1,6 +1,4 @@
-package context;
-
-import org.junit.Assert;
+import context.ContextStore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +13,8 @@ class AppTest {
     Logger log = Logger.getLogger(PropertyUtilities.class.getName());;
 
     @BeforeEach
-    public void before(){ContextStore.loadProperties("test.properties");}
+    public void before(){
+        ContextStore.loadProperties("test.properties");}
 
     @Test
     public void propertyReadingTest() {
