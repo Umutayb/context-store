@@ -1,4 +1,4 @@
-# Utility Library README
+# ContextStore
 
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.umutayb/context-store?color=brightgreen&label=ContextStore)](https://mvnrepository.com/artifact/io.github.umutayb/context-store/latest)
