@@ -15,7 +15,7 @@ import static properties.PropertyUtilities.fromPropertyFile;
  * Each thread has its own map, which avoids concurrency issues and ensures thread safety.
  *
  * @author Umut Ay Bora
- * @version 1.4.0 (Documented in 1.4.0, released in an earlier version)
+ * @version 1.0.0 (Documented in 1.0.0, migrated from another Java-Utilities)
  */
 @SuppressWarnings({"unused", "unchecked"})
 public class ContextStore {
