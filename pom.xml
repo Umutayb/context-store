@@ -7,7 +7,6 @@
   <artifactId>context-store</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-
   <name>Context Store</name>
   <description>Context Store is a reliable context storage solution where values can be stored, updated and accessed on the same thread!</description>
   <url>https://github.com/Umutayb/context-store</url>
@@ -20,7 +19,7 @@
   </licenses>
 
   <properties>
-    <buildDirectory>${project.basedir}/out/artifacts/context-store_jar</buildDirectory>
+    <buildDirectory>${project.basedir}/out/artifacts/${project.artifactId}_jar</buildDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.version>3.8.0</maven.compiler.version>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -37,60 +36,32 @@
     </developer>
   </developers>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.junit</groupId>
-        <artifactId>junit-bom</artifactId>
-        <version>5.11.0</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
   <dependencies>
-
     <!-- JUnit -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
+      <version>5.9.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-runner</artifactId>
+      <version>1.2.0</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jetbrains</groupId>
-      <artifactId>annotations</artifactId>
-      <version>24.0.0</version>
-      <scope>compile</scope>
     </dependency>
   </dependencies>
 
   <scm>
     <connection>scm:git:git://github.com/Umutayb/context-store.git</connection>
     <developerConnection>scm:git:ssh://github.com/Umutayb/context-store.git</developerConnection>
-    <url>https://github.com/Umutayb/Umutayb/context-store</url>
+    <url>https://github.com/Umutayb/context-store</url>
   </scm>
 
   <build>
     <directory>${buildDirectory}</directory>
 
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.2.5</version>
-      </plugin>
       
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -166,8 +137,6 @@
         </executions>
       </plugin>
     </plugins>
-
-    <testSourceDirectory>src/test/java</testSourceDirectory>
   </build>
 
   <distributionManagement>
