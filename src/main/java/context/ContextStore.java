@@ -88,7 +88,113 @@ public class ContextStore {
      * @see ContextStore#map
      */
     public static synchronized <K, V> V get(K key, V defaultValue) {
-        return key != null && map.get().get(key) != null ? ((ConcurrentHashMap<K, V>) map.get()).get(key) : defaultValue;
+        return key != null && get(key) != null ? get(key): defaultValue;
+    }
+
+    /**
+     * Retrieves the boolean value associated with the specified key from the ContextStore.
+     * The method retrieves the value, converts it to a String, and uses Boolean.parseBoolean().
+     * Since Boolean.parseBoolean returns false for non-"true" strings (including null and invalid values),
+     * this method will return {@code false} if the key is not present, if the value is null,
+     * or if the value's string representation is anything other than "true" (case-insensitive).
+     *
+     * @param key The key whose associated boolean value is to be retrieved.
+     * @return The boolean value based on the key's string representation, or {@code false} if the key is not present or the value is not "true".
+     * @throws IllegalArgumentException If the provided key is null.
+     * @see ContextStore#get(Object)
+     */
+    public static synchronized boolean getBoolean(Object key) {
+        Object value = get(key);
+        return Boolean.parseBoolean(value != null ? value.toString() : null);
+    }
+
+    /**
+     * Retrieves the boolean value associated with the specified key from the ContextStore.
+     * The method retrieves the value, converts it to a String, and uses Boolean.parseBoolean().
+     * If the key is not present in the map (and {@code get(key)} returns null), the
+     * {@code defaultValue} is returned. Otherwise, {@code Boolean.parseBoolean(value.toString())}
+     * is used, which returns {@code false} for non-"true" strings.
+     *
+     * @param key           The key whose associated boolean value is to be retrieved.
+     * @param defaultValue  The default boolean value to be returned if the key is not present.
+     * @return The boolean value based on the key's string representation, or the defaultValue if the key is not present.
+     * @throws IllegalArgumentException If the provided key is null.
+     * @see ContextStore#get(Object)
+     */
+    public static synchronized boolean getBoolean(Object key, boolean defaultValue) {
+        Object value = get(key);
+        if (value == null)
+            return defaultValue;
+
+        return Boolean.parseBoolean(value.toString());
+    }
+
+    /**
+     * Retrieves the int value associated with the specified key from the ContextStore.
+     * The method attempts to parse the value (after converting to String) into an int.
+     * If the key is not present or parsing fails (NumberFormatException), the value {@code 0} is returned.
+     *
+     * @param key The key whose associated int value is to be retrieved.
+     * @return The int value associated with the specified key, or {@code 0} if the key is not present or parsing fails.
+     * @throws IllegalArgumentException If the provided key is null.
+     * @see ContextStore#get(Object)
+     */
+    public static synchronized int getInt(Object key) {
+        return getInt(key, 0);
+    }
+
+    /**
+     * Retrieves the int value associated with the specified key from the ContextStore.
+     * The method attempts to parse the value (after converting to String) into an int.
+     * If parsing fails or the key is not present, the {@code defaultValue} is returned.
+     *
+     * @param key           The key whose associated int value is to be retrieved.
+     * @param defaultValue  The default int value to be returned if parsing fails or the key is not present.
+     * @return The int value associated with the specified key, or the defaultValue if parsing fails.
+     * @throws IllegalArgumentException If the provided key is null.
+     * @see ContextStore#get(Object)
+     */
+    public static synchronized int getInt(Object key, int defaultValue) {
+        Object value = get(key);
+        if (value == null)
+            return defaultValue;
+
+        try {return Integer.parseInt(value.toString());}
+        catch (NumberFormatException ignored) {return defaultValue;}
+    }
+
+    /**
+     * Retrieves the double value associated with the specified key from the ContextStore.
+     * The method attempts to parse the value (after converting to String) into a double.
+     * If the key is not present or parsing fails (NumberFormatException), the value {@code 0.0} is returned.
+     *
+     * @param key The key whose associated double value is to be retrieved.
+     * @return The double value associated with the specified key, or {@code 0.0} if the key is not present or parsing fails.
+     * @throws IllegalArgumentException If the provided key is null.
+     * @see ContextStore#get(Object)
+     */
+    public static synchronized double getDouble(Object key) {
+        return getDouble(key, 0.0);
+    }
+
+    /**
+     * Retrieves the double value associated with the specified key from the ContextStore.
+     * The method attempts to parse the value (after converting to String) into a double.
+     * If parsing fails or the key is not present, the {@code defaultValue} is returned.
+     *
+     * @param key           The key whose associated double value is to be retrieved.
+     * @param defaultValue  The default double value to be returned if parsing fails or the key is not present.
+     * @return The double value associated with the specified key, or the defaultValue if parsing fails.
+     * @throws IllegalArgumentException If the provided key is null.
+     * @see ContextStore#get(Object)
+     */
+    public static synchronized double getDouble(Object key, double defaultValue) {
+        Object value = get(key);
+        if (value == null)
+            return defaultValue;
+
+        try {return Double.parseDouble(value.toString());}
+        catch (NumberFormatException ignored) {return defaultValue;}
     }
 
     /**
