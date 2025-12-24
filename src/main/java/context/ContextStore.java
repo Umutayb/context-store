@@ -310,29 +310,10 @@ public class ContextStore {
     }
 
     static {
-        //Loads default property files for some popular property name patterns.
-        String[] defaultProperties = new String[] {
-                "pom.properties",
-                "pickleib.properties",
-                "app.properties",
-                "test.properties"
-        };
-
-        for (String propertyName : defaultProperties) {
-            Properties properties = new Properties();
-            try {
-                properties.load(new FileReader(propertyName));
-            } catch (IOException e) {
-                try (InputStream inputStream = ContextStore.class.getResourceAsStream("/" + propertyName)) {
-                    if (inputStream != null) {
-                        properties.load(inputStream);
-                        merge(properties);
-                    }
-                }
-                catch (IOException | NullPointerException ignored) {}
-            }
-
-        }
+        Level defaulLogLevel = log.getLevel();
+        log.setLevel(Level.OFF);
+        loadProperties("pom.properties", "pickleib.properties", "app.properties", "test.properties");
+        log.setLevel(defaulLogLevel);
     }
 
 }
