@@ -1,7 +1,6 @@
 package context;
 
 import properties.PropertyUtilities;
-
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
@@ -276,4 +275,36 @@ public class ContextStore {
     public static synchronized void loadProperties(String... propertyNames) {
         for (String propertyName : propertyNames) merge(fromPropertyFile(propertyName));
     }
+
+    /**
+     * Merges **all** system properties into the {@link ContextStore} that is bound to the
+     * current thread.
+     *
+     * <p>This method is {@code synchronized} so that concurrent threads cannot corrupt the
+     * store while it is being populated.  Internally it delegates to
+     * {@link ContextStore#merge(Map...)} with the map returned by
+     * {@link System#getProperties()}.</p>
+     *
+     * <p>The operation does **not** throw checked exceptions; any
+     * {@code IOException}, {@code UncheckedIOException} or other runtime exceptions that
+     * may be thrown by {@code ContextStore#merge(..)} are propagated to the caller.
+     * Those exceptions are logged by the underlying store implementation for further
+     * diagnostic purposes.</p>
+     *
+     * @see System#getProperties()  – the source of the property map that is merged
+     * @see ContextStore#merge(Map...)  – merges the supplied map into the thread‑local store
+     *
+     * @throws IllegalArgumentException if {@code System.getProperties()} somehow returns
+     *         {@code null} (this cannot happen with a standard JVM, but the check is
+     *         performed defensively by {@link ContextStore#merge(Map...)}).
+     *
+     */
+    public static synchronized void loadSystemProperties() {
+        merge(System.getProperties());
+    }
+
+    static {
+        loadProperties("test.properties", "pom.properties", "app.properties", "pickleib.properties");
+    }
+
 }
