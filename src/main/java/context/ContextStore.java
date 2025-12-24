@@ -1,10 +1,15 @@
 package context;
 
 import properties.PropertyUtilities;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
 
 import static properties.PropertyUtilities.fromPropertyFile;
 
@@ -304,7 +309,23 @@ public class ContextStore {
     }
 
     static {
-        loadProperties("test.properties", "pom.properties", "app.properties", "pickleib.properties");
+        //Loads default property files for some popular property name patterns.
+        String[] defaultProperties = new String[] {
+                "pom.properties",
+                "pickleib.properties",
+                "app.properties",
+                "test.properties"
+        };
+
+        for (String propertyName : defaultProperties) {
+            Properties properties = new Properties();
+            try (InputStream inputStream = ContextStore.class.getResourceAsStream("/" + propertyName)) {
+                if (inputStream != null)
+                    properties.load(inputStream);
+            }
+            catch (IOException | NullPointerException ignored) {}
+            merge(properties);
+        }
     }
 
 }
