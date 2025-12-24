@@ -1,12 +1,18 @@
 package context;
 
 import properties.PropertyUtilities;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
 
-import static properties.PropertyUtilities.fromPropertyFile;
+import static properties.PropertyUtilities.*;
 
 /**
  * --- Imported from Java-Utilities to be a standalone library. ---
@@ -304,7 +310,10 @@ public class ContextStore {
     }
 
     static {
-        loadProperties("test.properties", "pom.properties", "app.properties", "pickleib.properties");
+        Level defaulLogLevel = log.getLevel();
+        log.setLevel(Level.OFF);
+        loadProperties("pom.properties", "pickleib.properties", "app.properties", "test.properties");
+        log.setLevel(defaulLogLevel);
     }
 
 }
