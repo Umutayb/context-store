@@ -2,6 +2,7 @@ package context;
 
 import properties.PropertyUtilities;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
@@ -11,7 +12,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 
-import static properties.PropertyUtilities.fromPropertyFile;
+import static properties.PropertyUtilities.*;
 
 /**
  * --- Imported from Java-Utilities to be a standalone library. ---
@@ -319,12 +320,18 @@ public class ContextStore {
 
         for (String propertyName : defaultProperties) {
             Properties properties = new Properties();
-            try (InputStream inputStream = ContextStore.class.getResourceAsStream("/" + propertyName)) {
-                if (inputStream != null)
-                    properties.load(inputStream);
+            try {
+                properties.load(new FileReader(propertyName));
+            } catch (IOException e) {
+                try (InputStream inputStream = ContextStore.class.getResourceAsStream("/" + propertyName)) {
+                    if (inputStream != null) {
+                        properties.load(inputStream);
+                        merge(properties);
+                    }
+                }
+                catch (IOException | NullPointerException ignored) {}
             }
-            catch (IOException | NullPointerException ignored) {}
-            merge(properties);
+
         }
     }
 
