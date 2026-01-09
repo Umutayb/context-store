@@ -5,7 +5,7 @@
 
   <groupId>io.github.umutayb</groupId>
   <artifactId>context-store</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
   <packaging>jar</packaging>
   <name>Context Store</name>
   <description>Context Store is a reliable context storage solution where values can be stored, updated and accessed on the same thread!</description>
