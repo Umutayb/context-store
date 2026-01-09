@@ -17,7 +17,7 @@ import static properties.Constants.UTILITY_PROPERTIES_FILE_NAME;
 @SuppressWarnings("UnusedReturnValue")
 public abstract class PropertyUtilities {
 
-    public static Logger log = Logger.getLogger(PropertyUtilities.class.getName());;
+    public static Logger log = Logger.getLogger(PropertyUtilities.class.getName());
 
     /**
      * The default Properties object containing the loaded default properties.
