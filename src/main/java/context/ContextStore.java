@@ -307,7 +307,7 @@ public class ContextStore {
     static {
         Level defaulLogLevel = log.getLevel();
         log.setLevel(Level.OFF);
-        loadProperties("pom.properties", "pickleib.properties", "app.properties", "test.properties");
+        loadProperties("pom.properties", "pickleib.properties", "app.properties", "test.properties", "secret.properties");
         log.setLevel(defaulLogLevel);
     }
 
